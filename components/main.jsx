@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 export default function Main() {
-  const API_KEY = "60869c14840c4c38a34cdd5a1a99d61d";
+  const API_KEY = process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY;
   const [ingredients, setIngredients] = useState("");
   const [recipes, setRecipes] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
@@ -44,7 +44,7 @@ export default function Main() {
   };
 
   return (
-    <div>
+    <div >
       {/* Hero Section */}
       <div className="relative w-full h-[400px]">
         <Image
@@ -54,10 +54,27 @@ export default function Main() {
           className="object-cover"
           priority // Prioritize loading the hero image
         />
-        <h1 className="absolute inset-0 flex items-center justify-center text-white text-2xl font-bold bg-black/50 p-4">
-          Welcome To Find Recipes by Ingredients for Free
+        <h1 className="absolute inset-0 flex items-center justify-center text-white text-6xl font-bold bg-black/50 p-4">
+          Welcome To Find <br /> Recipes by Ingredients 
         </h1>
       </div>
+
+      {/* cards */}
+      <div className="flex justify-between border-y border-solid">
+    <div className=" w-[45%]  text-lg  ">
+    <img src="/sauce.png" alt="My Logo" />
+    <h1 className="font-bold text-3xl">Basic And Delicious</h1>
+<p>We teach you the best way to make delicious food even if you don't know how to cook.</p>
+
+    </div>
+    <div className="w-[45%] text-lg mb-10 ">
+    <img src="/harvest.png" alt="My Logo" />
+    <h1 className="font-bold text-3xl">available  Ingredients</h1>
+<p>you can searh based on what you have in home.</p>
+
+    </div>
+
+    </div>
 
       {/* Main Content */}
       <div className="min-h-screen flex flex-col items-center py-10 bg-gray-50">

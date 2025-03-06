@@ -2,7 +2,7 @@
 
 export default function Header() {
   return (
-    <div className="shadow-md">
+    <div className="shadow-md bg-gradient-to-b from-white to-green-200">
       <div className="flex items-center justify-between p-4 h-14">
         <img src="/leaf.png" alt="My Logo" />
 
