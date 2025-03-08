@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 export default function Main() {
-  const API_KEY = process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY;
+  const API_KEY = "c3905ad0e44c45098f85549c21357080";
   const [ingredients, setIngredients] = useState("");
   const [recipes, setRecipes] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
