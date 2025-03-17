@@ -70,7 +70,7 @@ export default function Main() {
     <div className="w-[45%] text-lg mb-10 ">
     <img src="/harvest.png" alt="My Logo" />
     <h1 className="font-bold text-3xl">available  Ingredients</h1>
-<p>you can searh based on what you have in home.</p>
+<p>you can search based on what you have in home.</p>
 
     </div>
 
