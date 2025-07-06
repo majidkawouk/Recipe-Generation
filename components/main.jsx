@@ -3,15 +3,15 @@ import Image from "next/image";
 import { useState } from "react";
 
 export default function Main() {
-  const API_KEY = "c3905ad0e44c45098f85549c21357080";
+  const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
   const [ingredients, setIngredients] = useState("");
   const [recipes, setRecipes] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
-  const [isLoading, setIsLoading] = useState(false); // Added loading state
+  const [isLoading, setIsLoading] = useState(false); 
 
-  // Fetch recipes based on ingredients
+  
   const fetchRecipes = async () => {
-    if (!ingredients.trim()) return; // Prevent empty searches
+    if (!ingredients.trim()) return;
     setIsLoading(true);
     const url = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${API_KEY}&ingredients=${ingredients}&number=5`;
 
@@ -23,11 +23,11 @@ export default function Main() {
     } catch (error) {
       console.error("Error fetching recipes:", error);
     } finally {
-      setIsLoading(false); // Reset loading state
+      setIsLoading(false); 
     }
   };
 
-  // Fetch detailed recipe information
+
   const fetchRecipeDetails = async (recipeId) => {
     setIsLoading(true);
     const url = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${API_KEY}`;
@@ -52,7 +52,7 @@ export default function Main() {
           alt="nat"
           fill
           className="object-cover"
-          priority // Prioritize loading the hero image
+          priority 
         />
         <h1 className="absolute inset-0 flex items-center justify-center text-white text-6xl font-bold bg-black/50 p-4">
           Welcome To Find <br /> Recipes by Ingredients 
@@ -90,12 +90,12 @@ export default function Main() {
             placeholder="Enter ingredients (e.g., tomato, cheese)"
             value={ingredients}
             onChange={(e) => setIngredients(e.target.value)}
-            onKeyPress={(e) => e.key === "Enter" && fetchRecipes()} // Allow Enter key to trigger search
+            onKeyPress={(e) => e.key === "Enter" && fetchRecipes()}
           />
           <button
             className="mt-4 bg-green-700 text-white px-6 py-2 rounded-lg hover:bg-green-800 transition disabled:opacity-50"
             onClick={fetchRecipes}
-            disabled={isLoading || !ingredients.trim()} // Disable button when loading or no input
+            disabled={isLoading || !ingredients.trim()}
           >
             {isLoading ? "Searching..." : "Search Recipes"}
           </button>
